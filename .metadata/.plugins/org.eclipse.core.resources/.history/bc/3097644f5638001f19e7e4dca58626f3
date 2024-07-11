@@ -1,0 +1,62 @@
+package com.microservices.order.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import com.microservices.order.dao.OrderDao;
+import com.microservices.order.pojo.Order;
+import com.microservices.order.pojo.OrderItemList;
+
+import reactor.core.publisher.Mono;
+
+@Service
+public class OrderServiceImpl implements OrderService {
+
+	@Autowired
+	 private OrderDao dao;
+	
+	@Autowired
+	private WebClient wb;
+	 
+	@Override
+	public String placeOrder(List<OrderItemList> orderRequest) throws Exception {
+		Order newOrder=new Order();
+		List<OrderItemList>  newOrderlineItems=
+				orderRequest.stream().map(orderItem->
+		{
+			
+			OrderItemList newOrderItem=new OrderItemList();
+			
+			newOrderItem.setPrice(orderItem.getPrice());
+			newOrderItem.setQuantity(orderItem.getQuantity());
+			newOrderItem.setSkucode(orderItem.getSkucode());
+			newOrderItem.setOrder(newOrder);
+			return newOrderItem;
+		}
+				).collect(Collectors.toList());
+		
+		newOrder.setOrderNum(new Random().nextInt(10000));
+		newOrder.setOrderList(newOrderlineItems);
+		
+		 for (OrderItemList item : newOrderlineItems) {
+		Boolean result=wb.get().uri("http://localhost:8085/isavailable/{skuCode}",item.getSkucode()).retrieve().bodyToMono(Boolean.class).block();
+		 
+		if(result ==null || !result) {
+			throw new Exception("Product not available");
+		}}
+		 dao.save(newOrder);
+		
+		
+	
+		 return "Order placed successfully";
+	}
+	
+}

@@ -1,0 +1,9 @@
+package com.microservices.inventory.service;
+
+import org.springframework.web.bind.annotation.RequestBody;
+
+public interface InventoryService {
+
+	
+	public String isavailable(  Integer skuCode);
+}
