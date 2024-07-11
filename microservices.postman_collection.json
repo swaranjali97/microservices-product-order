@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "3f43fbde-12f9-4f31-9b9e-ed2136d9b66a",
+		"name": "microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28389597"
+	},
+	"item": [
+		{
+			"name": "createProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Marker\",\r\n    \"description\":\"Red coloured marker\",\r\n    \"price\": 30\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products/createproduct",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"createproduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllProducts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Pen Holder\",\r\n    \"description\":\"Black color, Cylindrical in shape\",\r\n    \"price\": 400\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/products/allproducts",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"allproducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "place order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    [\r\n        {\r\n            \"skucode\":25,\r\n            \"price\":500,\r\n            \"quantity\":2\r\n        },\r\n        {\r\n            \"skucode\":35,\r\n            \"price\":100,\r\n            \"quantity\":3\r\n        }\r\n    ]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/placeorder",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"placeorder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "isProductAvailable",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "api-gw-allproducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8086/products/allproducts",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"products",
+						"allproducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api-gw-createproduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \r\n        \"name\": \"Car\",\r\n        \"description\": \"Blue Honda City\",\r\n        \"price\": 1200000\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8086/products/createproduct",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"products",
+						"createproduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api-gw-isavailable",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "api-gw-placeorder",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
