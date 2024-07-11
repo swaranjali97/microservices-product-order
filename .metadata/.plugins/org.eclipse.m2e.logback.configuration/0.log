@@ -5052,3 +5052,4 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.springfra
 2024-07-05 14:33:35,262 [Worker-57: Launching api-gateway - ApiGatewayApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2024-07-05 14:33:35,262 [Worker-57: Launching api-gateway - ApiGatewayApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Microservices\api-gateway\src\test\resources
 2024-07-08 12:10:13,733 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-07-11 10:47:50,084 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
